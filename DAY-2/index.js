@@ -1,6 +1,6 @@
-let a= "Aaryan";
-let b = "Arush";
-let c = "Arushi";
+let a= "Ayush";
+let b = "Likkie";
+let c = "Daniel";
 
 let d = "Hello "+ a + ", "+b+ " and " + c+ "!";
 // console.log(d);

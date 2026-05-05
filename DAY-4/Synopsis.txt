@@ -1,0 +1,56 @@
+// =======================
+// setTimeout → runs once after delay
+// =======================
+setTimeout(() => {
+  console.log("Runs after 5 sec");
+}, 5000);
+
+// =======================
+// setInterval → runs repeatedly
+// =======================
+let id = setInterval(() => {
+  console.log("Runs every 2 sec");
+}, 2000);
+
+// stop interval
+clearInterval(id);
+
+// =======================
+// CALLBACK FUNCTION
+// =======================
+function getData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched");
+    callback();
+  }, 1000);
+}
+
+getData(() => console.log("Next step"));
+
+// =======================
+// PROMISE
+// =======================
+let myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) resolve("Success");
+  else reject("Error");
+});
+
+// =======================
+// .then / .catch
+// =======================
+myPromise
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+
+// =======================
+// FETCH DATA (simulate)
+// =======================
+function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Data received"), 2000);
+  });
+}
+
+fetchData().then(data => console.log(data));

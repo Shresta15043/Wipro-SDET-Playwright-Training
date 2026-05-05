@@ -1,3 +1,4 @@
+// Array Methods
 /*4. String Lengths** Write a function that takes an array of strings and uses .filter() to return only the strings that have more than 5 characters.*/
 function filterLongStrings(arr) {
   return arr.filter(str => str.length > 5);

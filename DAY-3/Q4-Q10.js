@@ -1,5 +1,5 @@
 // Array Methods
-/*4. String Lengths** Write a function that takes an array of strings and uses .filter() to return only the strings that have more than 5 characters.*/
+ /*4. String Lengths** Write a function that takes an array of strings and uses .filter() to return only the strings that have more than 5 characters.*/
 function filterLongStrings(arr) {
   return arr.filter(str => str.length > 5);
 }
@@ -48,4 +48,4 @@ console.log(average);
 /*10. Flattening (The Bonus)** Without using the built-in .flat() method, use .reduce() to turn this nested array into a single flat array: [[1, 2], [3, 4], [5, 6]] → [1, 2, 3, 4, 5, 6]*/
 const nested = [[1, 2], [3, 4], [5, 6]];
 const flat = nested.reduce((acc, curr) => acc.concat(curr), []);
-console.log(flat); 
+console.log(flat);

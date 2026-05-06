@@ -100,4 +100,25 @@ async function getCatFacts() {
 }
 getCatFacts();
 
+// =======================
+// COUNTRIES 
+// =======================
 
+async function fetchCountries() {
+  try {
+    const res = await fetch("https://restcountries.com/v3.1/all");
+    const countries = await res.json();
+
+    const result = countries
+      .filter(c => c.population > 100000000)
+      .map(c => ({
+        name: c.name.common,
+        population: c.population
+      }));
+
+    console.log("Countries:", result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+fetchCountries();

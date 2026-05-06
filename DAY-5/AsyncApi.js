@@ -126,6 +126,7 @@ fetchCountries();
 // =======================
 // QUOTES 
 // =======================
+
 async function getQuotes() {
   try {
     const res = await fetch("https://zenquotes.io/api/quotes");
@@ -146,6 +147,7 @@ getQuotes();
 // =======================
 // UNIVERSITIES 
 // =======================
+
 async function getUniversities() {
   try {
     const res = await fetch("http://universities.hipolabs.com/search?country=India");
@@ -161,3 +163,24 @@ async function getUniversities() {
   }
 }
 getUniversities();
+
+// =======================
+// CRYPTO 
+// =======================
+
+async function getCrypto() {
+  try {
+    const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd");
+    const data = await res.json();
+
+    const coins = data
+      .filter(c => c.current_price > 1000)
+      .map(c => c.name);
+
+    console.log("Expensive Coins:", coins);
+  } catch (err) {
+    console.error(err);
+  }
+}
+getCrypto();
+

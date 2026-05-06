@@ -1,0 +1,33 @@
+*async function*
+- A function declared with `async` that always returns a Promise. 
+- Inside an `async` function, you can use `await`. The function pauses at `await` but doesn't block the whole program.
+
+*await*
+- An operator you can only use inside `async` functions. 
+- Pauses the `async` function until a Promise settles, then returns the result. 
+- Makes async code look sequential. If the Promise rejects, `await` throws an error you can catch with `try/catch`.
+
+async function fetchUser() {
+  try {
+    let user = await fetch('/api/user'); // waits here
+    let data = await user.json();        // waits again
+    return data;
+  } catch (err) {
+    console.log("Failed:", err);
+  }
+}
+
+*OOPs concept* : Object-Oriented Programming
+
+- A programming style based on "objects" that bundle data + behavior together.
+- Helps organize large code, reuse logic, and model real-world things.
+*4 pillars*:
+**Encapsulation**	Hide internal details, expose only what’s needed. Like a capsule. Uses classes + private fields.
+**Abstraction**	Show only essential features, hide complexity. Like driving a car without knowing the engine.
+**Inheritance**	Child class gets properties/methods from parent class. Reuse code. `class Dog extends Animal`
+**Polymorphism**	Same method name, different behavior based on object. Like `speak()` for Dog vs Cat.
+
+*Quick mental model*: 
+`async/await` = how JS handles waiting without freezing. 
+`OOPs` = how you structure code around objects.
+

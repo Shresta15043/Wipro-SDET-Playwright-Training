@@ -1,0 +1,104 @@
+// Day 4:
+// Promises:
+//      A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+// A Promise has three states:
+
+// Pending → initial state, neither success nor failure
+// Fulfilled → operation completed successfully
+// Rejected → operation failed
+
+
+
+// =======================
+// setTimeout → runs once after delay
+// setInterval → runs repeatedly
+// clearInterval → stops interval
+// Callback → function passed as argument
+// Promise → handles async result (success/failure)
+// .then → success handler
+// .catch → error handler
+// =======================
+
+
+// =======================
+// setTimeout → runs once after delay
+// =======================
+setTimeout(() => {
+  console.log("Runs after 5 sec");
+}, 5000);
+
+
+// =======================
+// setInterval → runs repeatedly
+// =======================
+let id = setInterval(() => {
+  console.log("Runs every 2 sec");
+}, 2000);
+
+// stop interval
+clearInterval(id);
+
+
+// =======================
+// CALLBACK FUNCTION
+// =======================
+function getData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched");
+    callback();
+  }, 1000);
+}
+
+getData(() => console.log("Next step"));
+
+
+// =======================
+// PROMISE
+// =======================
+let myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) resolve("Success");
+  else reject("Error");
+});
+
+
+// =======================
+// .then / .catch
+// =======================
+myPromise
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+
+
+// =======================
+// FETCH DATA (Promise simulation)
+// =======================
+function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Data received"), 2000);
+  });
+}
+
+fetchData().then(data => console.log(data));
+
+
+// ========================================================
+ 
+fetch("https://catfact.ninja/facts")      // sends request to API to get cat facts
+  .then(res => res.json())               // converts response into JSON format
+  .then(data => {                       // handles JSON data after conversion
+    console.log(data);                 // prints full API response in console
+
+    const facts = data.data;          // extracts only the facts array from response
+
+    
+    // using filter
+
+    const result = facts.filter(item => item.length > 70);              // keeps only facts longer than 70 characters
+
+    return result;                                                      // passes filtered data to next .then()
+  }) 
+  .then(filteredData => console.log(filteredData))                     // prints filtered facts
+  .catch(error => console.error("Error:", error));                     // handles any error from fetch or processing

@@ -184,3 +184,17 @@ async function getCrypto() {
 }
 getCrypto();
 
+// =======================
+// OPEN NOTIFY
+// =======================
+async function getAstronauts() {
+  let data = await fetch("https://api.open-notify.org/astros.json");
+  data = await data.json();
+
+  let result = data.people
+    .map(p => p.name);
+
+  console.log("Astronauts:", result);
+  return result;
+}
+getAstronauts();

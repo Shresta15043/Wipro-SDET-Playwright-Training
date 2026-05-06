@@ -122,3 +122,42 @@ async function fetchCountries() {
   }
 }
 fetchCountries();
+
+// =======================
+// QUOTES 
+// =======================
+async function getQuotes() {
+  try {
+    const res = await fetch("https://zenquotes.io/api/quotes");
+    const data = await res.json();
+
+    const result = data
+      .filter(q => q.q.length < 100)
+      .map(q => q.q);
+
+    console.log(result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+getQuotes();
+
+
+// =======================
+// UNIVERSITIES 
+// =======================
+async function getUniversities() {
+  try {
+    const res = await fetch("http://universities.hipolabs.com/search?country=India");
+    const data = await res.json();
+
+    const result = data
+      .filter(u => u.name.includes("Technology"))
+      .map(u => u.name);
+
+    console.log(result);
+  } catch (err) {
+    console.error(err);
+  }
+}
+getUniversities();

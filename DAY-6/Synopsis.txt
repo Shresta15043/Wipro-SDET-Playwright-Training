@@ -1,0 +1,23 @@
+Synopsis: JavaScript Data Processing & Callback Exercises
+This set of 4 problems demonstrates core JavaScript concepts for data cleaning, transformation, and async handling in real-world scenarios.
+
+Q1: Flight Booking Data Cleaner
+Takes raw strings like "London-Paris:150" and converts them into structured objects. Implements parsing with split(), type coercion for price with Number(), and validation to default invalid values to 0. Filters flights between $100-$500, sorts by price ascending, and returns a JSON string. Key concepts: map, filter, sort, JSON.stringify, null/undefined handling.
+
+Q2: E-Commerce Discount Applicator
+Builds a promo-code system using a callback pattern. The isEligible callback checks if a product is Electronics AND price > $200. applyPromo uses the callback to discount eligible items by 10%, adds isDiscounted flag to all items, logs results with template literals, and uses setTimeout 1000ms to simulate server delay. Key concepts: callbacks, map, template literals, async simulation.
+
+Q3: Movie Stream Analytics
+Parses "MOVIE_NAME|GENRE|VIEW_COUNT" strings into objects. Validates view counts, defaulting corrupted data to 0. Filters for Action or Sci-Fi movies with >5000 views, sorts by views descending, and returns JSON string. Key concepts: string parsing, Number.isNaN, filter, sort, JSON.stringify.
+
+Q4: Automated Payroll Processor
+Implements a payroll system with a taxLogic callback that returns 20% tax if salary > 5000, else 10%. Calculates netSalary and assigns status as "Premium" if net > 4000, else "Standard". Logs total payout using template literals and returns processed employees via Promise after 2000ms delay. Key concepts: callbacks, map, financial calculations, setTimeout, Promises.
+
+Common patterns across all 4:  
+Input validation for null/undefined 
+Proper use of const/let
+Array methods: map, filter, sort
+Callback functions for custom logic
+Template literals for formatted output
+Async simulation with setTimeout
+Clean, readable code with defensive programming

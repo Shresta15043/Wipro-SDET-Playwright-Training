@@ -1,0 +1,508 @@
+
+// Day 1 Synopsis
+
+// What is JavaScript?
+// -> JavaScript is a scripting language used to make websites interactive
+
+// HTML, CSS and JavaScript
+
+// -> HTML is used to create the structure of the webpage
+// -> CSS is used to design and style the webpage
+// -> JavaScript is used to add logic and interactivity
+
+
+// Variable Declaration and Initialization
+
+
+// Declaration means creating a variable
+
+// let userName;
+
+// Initialization means assigning value to a variable
+
+// userName = "Keerthana";
+
+// Declaration and Initialization together
+
+// let userName = "Keerthana";
+
+
+// Difference between var, let and const
+
+// -> var can be redeclared and updated
+// -> let can be updated but cannot be redeclared in same scope
+// -> const cannot be updated or redeclared
+// -> let and const are block scoped
+
+
+// Difference between JavaScript and Node.js
+
+// -> JavaScript is a programming language
+// -> Node.js is an environment used to run JavaScript outside the browser
+// -> JavaScript mainly works on frontend
+// -> Node.js is mostly used for backend development
+
+
+// JSON
+
+// -> JSON stands for JavaScript Object Notation
+// -> It is a lightweight format used for storing and transferring data
+// -> Data is stored in key and value format
+
+// Example
+
+
+// Request Response Cycle
+
+// -> Client sends request to the server
+// -> Server processes the request
+// -> Server sends response back to the client
+
+// States of request:
+// 1. Pending
+// 2. Success
+// 3. Failed
+
+
+// HTTP Methods
+
+// GET Request
+// -> Used to fetch data from server
+
+// POST Request
+// -> Used to send data to server
+// -> Mostly used in login and registration forms
+
+
+// String Operations
+
+// let str = "JavaScript";
+
+// console.log(str.length);          // gives length
+// console.log(str.toUpperCase());  // converts to uppercase
+// console.log(str.toLowerCase());  // converts to lowercase
+// console.log(str.substring(0,4)); // extracts part of string
+
+
+// Mathematical Operations
+
+// let a = 20;
+// let b = 10;
+
+// console.log(a + b); // Addition
+// console.log(a - b); // Subtraction
+// console.log(a * b); // Multiplication
+// console.log(a / b); // Division
+// console.log(a % b); // Modulus
+
+
+// Comparison Operations
+
+// console.log(a > b);  // true
+// console.log(a < b);  // false
+// console.log(a == b); // false
+// console.log(a != b); // true
+// console.log(a >= b); // true
+// console.log(a <= b); // false
+
+
+// Objects in JavaScript
+
+// let student = {
+//     name: "Keerthana",
+//     age: 21,
+//     city: "Chennai"
+// };
+
+// console.log(student);
+// console.log(student.name);
+// console.log(student.age);
+// console.log(student.city);
+
+
+// typeof Operator
+
+// -> typeof is used to check datatype of a value
+
+// let value = 100;
+
+// console.log(typeof value); // number
+
+
+// Loops in JavaScript
+
+// -> for loop
+// -> while loop
+// -> do while loop
+
+
+// for loop example
+
+// for(let i = 1; i <= 5; i++) {
+//     console.log(i);
+// }
+
+
+// while loop example
+
+// let i = 1;
+
+// while(i <= 5) {
+//     console.log(i);
+//     i++;
+// }
+
+
+// do while example
+
+// let j = 1;
+
+// do {
+//     console.log(j);
+//     j++;
+// } while(j <= 5);
+
+// Day 2 Synopsis     
+
+
+//template literals
+// -> Template literals are a way to create strings in JavaScript using backticks (`) instead of quotes.
+// -> They allow for easier string interpolation and multi-line strings.    
+// Example
+// let name = "Keerthana";
+// let age = 21;                
+// console.log(`My name is ${name} and I am ${age} years old.`); // My name is Keerthana and I am 21 years old.
+
+
+
+//funtions
+// -> A function is a block of code designed to perform a particular task. It is executed when "something" invokes it (calls it).
+// -> Functions can take parameters and return values.  
+
+//arrow functions
+// -> Arrow functions are a shorter syntax for writing functions in JavaScript. They are anonymous and change the way "this" binds in functions.
+// Example
+// const add = (a, b) => a + b;
+// console.log(add(5, 3)); // 8     
+
+//array methods
+// filter map forEach
+// -> filter() creates a new array with all elements that pass the test implemented by the provided function.
+// -> map() creates a new array populated with the results of calling a provided function on every element in the calling array.
+// -> forEach() executes a provided function once for each array element. It does not return a new array.       
+//example
+//     filter example
+// const arr=[1,2,3,4,5];
+// const even = arr.filter(n => n % 2 === 0);
+// console.log(even); // [2, 4]        
+// map example
+// const arr=[1,2,3,4,5];
+// const double = arr.map(n => n * 2);
+// console.log(double);    
+// forEach example         
+// const arr=[1,2,3,4,5];  
+// arr.forEach(n => console.log(n)); // prints each number in array on new line
+
+
+
+                                                 
+                                                               // Day 4 Synopsis:
+// Promises:
+//      A Promise in JavaScript is an object that represents the eventual completion (or failure) of an asynchronous operation and its resulting value.
+
+// A Promise has three states:
+
+// Pending → initial state, neither success nor failure
+// Fulfilled → operation completed successfully
+// Rejected → operation failed
+
+
+
+// =======================
+// setTimeout → runs once after delay
+// setInterval → runs repeatedly
+// clearInterval → stops interval
+// Callback → function passed as argument
+// Promise → handles async result (success/failure)
+// .then → success handler
+// .catch → error handler
+// =======================
+
+
+// =======================
+// setTimeout → runs once after delay
+// =======================
+setTimeout(() => {
+  console.log("Runs after 5 sec");
+}, 5000);
+
+
+// =======================
+// setInterval → runs repeatedly
+// =======================
+let id = setInterval(() => {
+  console.log("Runs every 2 sec");
+}, 2000);
+
+// stop interval
+clearInterval(id);
+
+
+// =======================
+// CALLBACK FUNCTION
+// =======================
+function getData(callback) {
+  setTimeout(() => {
+    console.log("Data fetched");
+    callback();
+  }, 1000);
+}
+
+getData(() => console.log("Next step"));
+
+
+// =======================
+// PROMISE
+// =======================
+let myPromise = new Promise((resolve, reject) => {
+  let success = true;
+
+  if (success) resolve("Success");
+  else reject("Error");
+});
+
+
+// =======================
+// .then / .catch
+// =======================
+myPromise
+  .then(res => console.log(res))
+  .catch(err => console.log(err));
+
+
+// =======================
+// FETCH DATA (Promise simulation)
+// =======================
+function fetchData() {
+  return new Promise(resolve => {
+    setTimeout(() => resolve("Data received"), 2000);
+  });
+}
+
+fetchData().then(data => console.log(data));
+
+
+// ========================================================
+ 
+fetch("https://catfact.ninja/facts")      // sends request to API to get cat facts
+  .then(res => res.json())               // converts response into JSON format
+  .then(data => {                       // handles JSON data after conversion
+    console.log(data);                 // prints full API response in console
+
+    const facts = data.data;          // extracts only the facts array from response
+
+    
+    // using filter
+
+    const result = facts.filter(item => item.length > 70);              // keeps only facts longer than 70 characters
+
+    return result;                                                      // passes filtered data to next .then()
+  }) 
+  .then(filteredData => console.log(filteredData))                     // prints filtered facts
+  .catch(error => console.error("Error:", error));                     // handles any error from fetch or processing
+
+
+
+// Day 5 Synopsis
+
+// 1. Async & Await  
+// Used to handle asynchronous operations in a cleaner, synchronous-like way.  
+// async makes a function return a promise, and await pauses execution until the promise resolves.
+
+// 2. setTimeout & setInterval  
+// setTimeout runs a function once after a specified delay.  
+// setInterval repeatedly runs a function at a fixed time interval.
+
+// 3. clearTimeout & clearInterval  
+// clearTimeout is used to cancel a scheduled setTimeout before it executes.  
+// clearInterval stops a repeating function created by setInterval.
+
+// 4. OOPs in JavaScript  
+// JavaScript supports Object-Oriented Programming using objects, classes, and prototypes.  
+// It includes concepts like encapsulation, inheritance, and polymorphism for structured coding.
+
+// Encapsulation  
+// Binding data and methods together inside a single unit (class).  
+// It helps in restricting direct access to data and improves security.
+
+// Inheritance  
+// A mechanism where one class acquires properties and methods of another class.  
+// It helps in code reusability and reduces duplication.
+
+// Polymorphism  
+// The ability of a method to take different forms based on context.  
+// Same method name can have different behavior in different classes.
+
+// Abstraction  
+// Hiding internal implementation details and showing only essential features.  
+// It helps in reducing complexity and improves code maintainability.
+
+// Class  
+// A blueprint for creating objects with predefined properties and methods.  
+// It acts as a template to define structure and behavior.
+
+// Constructor  
+// A special method used to initialize object properties when an object is created.  
+// It is automatically called when a new object is instantiated.
+
+//Day6 Synopsis: JavaScript Exercises
+
+// This set of 4 problems demonstrates real-world JavaScript operations such as data cleaning, transformation, filtering, sorting, callback handling, and asynchronous processing.
+
+// Q1: Flight Booking Data Cleaner
+
+// Processes raw flight booking strings and converts them into structured flight objects. Invalid or missing prices are safely converted to 0. The data is filtered within a specific price range, sorted in ascending order, and converted into a JSON string.
+
+// Concepts Used
+// split()
+
+// Used to separate city names and prices from a string.
+
+// map()
+
+// Transforms each raw string into an object.
+
+// Number()
+
+// Converts string prices into actual numbers.
+
+// isNaN()
+
+// Checks whether converted price is invalid.
+
+// filter()
+
+// Keeps only flights between $100 and $500.
+
+// sort()
+
+// Sorts flights from cheapest to highest price.
+
+// JSON.stringify()
+
+// Converts final array into JSON string format.
+
+// Q2: E-Commerce Discount Applicator
+
+// Implements a promo-code system using callback functions. Eligible products receive discounts, discount status is added to every item, and results are displayed after a delay.
+
+// Concepts Used
+// Callback Function
+
+// A function passed as an argument to another function for custom discount checking.
+
+// map()
+
+// Updates every product object with discount information.
+
+// Conditional Logic
+
+// Checks product category and price eligibility.
+
+// Percentage Calculation
+
+// Calculates 10% discount from product price.
+
+// Spread Operator (...)
+
+// Copies existing object properties while adding new ones.
+
+// Template Literals
+
+// Creates dynamic output messages.
+
+// setTimeout()
+
+// Simulates delayed server response.
+
+// Q3: Movie Stream Analytics
+
+// Processes raw movie streaming data into structured objects, validates views, filters top-performing content, and sorts by popularity.
+
+// Concepts Used
+// split()
+
+// Separates movie name, genre, and views.
+
+// map()
+
+// Converts raw movie strings into objects.
+
+// Number()
+
+// Converts view count into number.
+
+// isNaN()
+
+// Handles corrupted or invalid views.
+
+// Logical Operators (||, &&)
+
+// Checks movie genre and views conditions.
+
+// filter()
+
+// Keeps only top-performing movies.
+
+// sort()
+
+// Sorts movies by highest views first.
+
+// JSON.stringify()
+
+// Returns final movie list as JSON string.
+
+// Q4: Automated Payroll Processor
+
+// Builds a payroll system that calculates taxes, computes net salary, assigns employee status, and processes payroll after a delay.
+
+// Concepts Used
+// Callback Function
+
+// Used for custom tax calculation logic.
+
+// Ternary Operator
+
+// Used for deciding tax percentage.
+
+// map()
+
+// Processes every employee object.
+
+// Percentage Calculation
+
+// Calculates salary tax deductions.
+
+// Object Property Addition
+
+// Adds netSalary and status.
+
+// Conditional Logic
+
+// Checks employee salary slabs and status.
+
+// Template Literals
+
+// Displays payroll summary dynamically.
+
+// setTimeout()
+
+
+// Day 8 synopsis
+
+// Today, we practiced a few of the questions that were given yesterday from those 10 to 12 topics.
+
+// In the afternoon session, sir was not available, so we practiced how to write questions based on concepts like callback functions, calculators, prototypes, and inheritance. These are the concepts we learned today.
+
+// We also learned a few loops, nested loops, scope, hoisting, and related concepts.
+

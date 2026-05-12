@@ -1,5 +1,4 @@
-
-// Day 1 Synopsis
+// Day 1 Synopsis //
 
 // What is JavaScript?
 // -> JavaScript is a scripting language used to make websites interactive
@@ -161,9 +160,8 @@
 //     console.log(j);
 //     j++;
 // } while(j <= 5);
-
-// Day 2 Synopsis     
-
+--------------------------------------------------------
+// Day 2 Synopsis  //
 
 //template literals
 // -> Template literals are a way to create strings in JavaScript using backticks (`) instead of quotes.
@@ -311,9 +309,9 @@ fetch("https://catfact.ninja/facts")      // sends request to API to get cat fac
   .then(filteredData => console.log(filteredData))                     // prints filtered facts
   .catch(error => console.error("Error:", error));                     // handles any error from fetch or processing
 
+---------------------------------------------------------------------
 
-
-// Day 5 Synopsis
+// Day 5 Synopsis //
 
 // 1. Async & Await  
 // Used to handle asynchronous operations in a cleaner, synchronous-like way.  
@@ -354,8 +352,9 @@ fetch("https://catfact.ninja/facts")      // sends request to API to get cat fac
 // Constructor  
 // A special method used to initialize object properties when an object is created.  
 // It is automatically called when a new object is instantiated.
+--------------------------------------------------------------------------
 
-//Day6 Synopsis: JavaScript Exercises
+//Day6 Synopsis: JavaScript Exercises //
 
 // This set of 4 problems demonstrates real-world JavaScript operations such as data cleaning, transformation, filtering, sorting, callback handling, and asynchronous processing.
 
@@ -497,12 +496,158 @@ fetch("https://catfact.ninja/facts")      // sends request to API to get cat fac
 
 // setTimeout()
 
-
-// Day 8 synopsis
+----------------------------------------------------------
+// Day 8 synopsis //
 
 // Today, we practiced a few of the questions that were given yesterday from those 10 to 12 topics.
 
 // In the afternoon session, sir was not available, so we practiced how to write questions based on concepts like callback functions, calculators, prototypes, and inheritance. These are the concepts we learned today.
 
 // We also learned a few loops, nested loops, scope, hoisting, and related concepts.
+
+-------------------------------------------------------------------------
+// Day 9 synopsis //
+
+ADVANCED JS TOPICS:
+-Default paramaeter :- It is used to return one Defaultvalue when the paramaeter is not passed by the function while calling instead of undefined.
+//Default Parameters
+function welcome(name="guest")
+{
+    console.log(`Welcome ${name}`);
+}
+
+welcome("vyshu");
+welcome("phani");
+welcome() // logs guest
+-spread operator :- (...), by using this spread operator we can have the combined data of 2 or more arrays.
+//Spread Operator
+//Variables
+const nums = [1,2,3,4,5];
+const newnums = [...nums,6,7,8,9,10];
+console.log(newnums);
+
+//objects
+
+const obj = {name:"vyshu", age:22};
+const newobj = {...obj, surname:"bellamkonda"};
+console.log(newobj);
+
+-Rest Operator:-It takes multiple values and packs them into a single array.
+
+//rest operator 
+const cal = { // rest operator
+    sum: (...nums) => nums.reduce((a, b) => a + b, 0), // rest parameters
+}
+
+console.log("\n3. Rest Operator:");
+console.log(cal.sum(1, 2, 43, 4))
+
+-Destructuring -
+
+// destructuring
+// const arr = ["Vyshu", "Phani", "Harshi", "Manu"];
+// const first = arr[0];
+// const second = arr[1];
+// const third = arr[2];
+// const fourth = arr[3];
+
+const [first, second, third, fourth, fifth] = ["Vyshu", "Phani", "Harshi", "Manu"]; // pos-based extraction
+const [one, two, ...three] = [1, 3, 5, 6, 7];
+console.log("\n4. Destructuring:");
+console.log(first, second, third, fourth, fifth);
+console.log(one, two, three)
+
+const { name, age } = {name: "Vyshu", age: 22}; // key-based extracted
+console.log(name, age);
+
+TYPESCRIPT:
+Type script is the superset of javascript.
+
+npm i -g typescript
+npx tsc --init
+npm install --save-dev tsx
+
+to run 
+npx tsx index.ts
+npm install --save-dev tsx
+npx ts-node index.ts
+
+//Interface : In TypeScript, an interface is a way to define the shape of an object—what properties and methods it should have, along with their types.
+Example:
+interface Person {
+    id: number;
+    name: string;
+    age: number;
+    role: Role; // using enum for role
+    isAdmin?: boolean; // optional property ?
+}
+
+interface Person {
+    email: string; // merge interface to add email property
+}
+//enum : In TypeScript, an enum (short for enumeration) is used to define a set of named constant values.
+
+Example: enum Role {
+    User = "USER",
+    Admin = "ADMIN",
+    SuperAdmin = "SUPER_ADMIN"
+} // USER, user, User, ADMIN, Admin, admin, SUPER_ADMIN, SuperAdmin, superAdmin
+
+//Array and tuple : 
+array: Arrays store multiple values, usually of the same type. => Same type - Many Values
+
+let arr: number[] = [1, 2, 3]; // array of numbers
+console.log("Array:", arr);
+
+tuple:Tuples store a fixed number of elements with fixed types in a specific order.  => Different type - Fixed values.
+
+let coordinates: [number, string] = [40.7128, "-74.0060"]; // Tuple for latitude and longitude
+console.log("Coordinates:", coordinates);
+
+//Generics
+
+Generics in TypeScript allow you to create reusable components/functions/classes that can work with different data types while still maintaining type safety.
+
+Instead of writing the same logic multiple times for different types, generics let you write it once.
+
+class Storage<T> {
+
+    addItems(item: T): void { // no return type
+        this.items.push(item);
+    }
+
+    getItem(index: number): T {
+        return this.items[index]!; // non-null assertion operator to indicate that the item will exist at the given index
+    }
+}
+
+const names = new Storage<string>();
+names.addItems("vyshu");
+names.addItems("phani");
+names.addItems("harshi");
+
+console.log(names.getItem(0), names.getItem(1), names.getItem(2), names.getItem(3)); // undefined for index 3
+
+//Generics with constraints:
+Sometimes in TypeScript, we don’t want a generic to accept any type.
+
+We want to restrict it.
+
+That restriction is called a constraint.
+
+We use the extends keyword for this.
+
+interface Haslength {
+    length:number;
+}
+
+//generics with constraints | extends keyword
+function logLength<T extends Haslength >(arg:T) : void {
+    console.log(arg.length);
+}
+
+logLength("Vyshnavi"); //String has length
+logLength([1,2,3,4]); //Array has length
+//logLength(15); // number doesn't have length property which throes an error
+
 

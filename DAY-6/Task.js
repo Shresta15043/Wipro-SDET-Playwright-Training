@@ -313,3 +313,4 @@ console.log("Final payroll:", result);
 //   { id: 102, name: "Bob", salary: 3500, netSalary: 3150, status: "Standard" },
 //   { id: 103, name: "Charlie", salary: 5200, netSalary: 4160, status: "Premium" }
 // ]
+

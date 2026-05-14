@@ -496,6 +496,48 @@ KEY TAKEAWAYS (DAY 10)
 - Immutability (Readonly) is a core pattern for predictable state management.
 
 --------------------------------------------------------------------------------
+DAY 11: ADVANCED TYPESCRIPT PATTERNS & UTILITIES
+--------------------------------------------------------------------------------
+
+1. GENERICS & WRAPPERS
+   - Generic API Wrappers: Creating reusable 'fetchData<T>' functions that automatically 
+     type the returned JSON data.
+   - Async Higher-Order Functions: Wrapping async functions in a generic 'safeExecute<T>' 
+     block for standardized error handling and try/catch logic.
+
+2. ADVANCED TYPE MANIPULATION
+   - Union Manipulation: Using 'Extract<T, U>' to keep specific types and 'Exclude<T, U>' 
+     to remove them from large union types.
+   - Conditional Types & Infer: Creating 'UnwrapPromise<T>' using the 'infer' keyword 
+     to dynamically extract the underlying type of a Promise.
+   - Template Literal Types: Enforcing exact string patterns (e.g., forcing a string to 
+     end with 'px', 'rem', or 'vh').
+
+3. DYNAMIC DATA STRUCTURES
+   - Record<K, V>: Mapping specific keys (like Enums) to specific value types (e.g., 
+     forcing every 'Role' to have a 'boolean' permission).
+   - Index Signatures: Creating objects that accept dynamic string keys while enforcing 
+     strict value types (e.g., '[key: string]: string | number').
+   - Mapped & Remapped Types: Iterating over an interface's keys to rename them 
+     dynamically (e.g., prefixing keys with 'DATA_' and converting to Uppercase).
+   - Recursive Types: Defining structures that reference themselves, useful for nested 
+     components like folder trees ('FolderNode').
+
+4. EXHAUSTIVENESS CHECKING
+   - The 'never' Type: Assigning unhandled cases in a 'switch' statement to a 'never' 
+     variable ensures the compiler will throw an error if a new union member is added 
+     but not handled in the logic.
+
+--------------------------------------------------------------------------------
+KEY TAKEAWAYS (DAY 11)
+--------------------------------------------------------------------------------
+- 'Record' ensures you don't accidentally miss mapping a required key.
+- The 'never' type acts as a safety net in switch statements to force code updates.
+- 'Extract' and 'Exclude' prevent duplication by deriving specific types from massive unions.
+- Template Literal and Conditional types allow TypeScript to be almost as flexible as raw JS, 
+  while maintaining strict compilation safety.
+  
+--------------------------------------------------------------------------------
  DAY 12: PLAYWRIGHT
 --------------------------------------------------------------------------------
 

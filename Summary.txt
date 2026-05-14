@@ -494,3 +494,22 @@ KEY TAKEAWAYS (DAY 10)
 - Type Guards prevent runtime errors when working with flexible Union types.
 - Express.js is the industry standard for building fast, minimalist Node.js APIs.
 - Immutability (Readonly) is a core pattern for predictable state management.
+
+--------------------------------------------------------------------------------
+ DAY 12: PLAYWRIGHT
+--------------------------------------------------------------------------------
+
+Playwright:
+    -> it is an automation tool to test the websites to evaluate whether its working as excpected.
+    -> in this course we are using JavaScript to write test cases
+    -> Main advantage of Playwright is it will automatically wait till the page steps executed, no need to use thread.sleep() to make it wait
+
+To install it we need to use:
+    npm init playwright@latest
+
+To run it:
+    npx playwright test filename.spec.js
+
+-> we should use async/await in callbacks
+-> playwright works with chromium, webkit,firefox
+-> all tests will run parallely so time will be efficient.

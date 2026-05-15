@@ -536,7 +536,7 @@ KEY TAKEAWAYS (DAY 11)
 - 'Extract' and 'Exclude' prevent duplication by deriving specific types from massive unions.
 - Template Literal and Conditional types allow TypeScript to be almost as flexible as raw JS, 
   while maintaining strict compilation safety.
-  
+
 --------------------------------------------------------------------------------
  DAY 12: PLAYWRIGHT
 --------------------------------------------------------------------------------
@@ -555,3 +555,41 @@ To run it:
 -> we should use async/await in callbacks
 -> playwright works with chromium, webkit,firefox
 -> all tests will run parallely so time will be efficient.
+
+--------------------------------------------------------------------------------
+ DAY 13: EXPRESS.JS + PLAYWRIGHT AUTOMATION TESTING (LOGIN FORM)
+--------------------------------------------------------------------------------
+
+1.express.js login application:
+    -built a basic server using express to handle routes and user authentication logic
+    -created endpoints (eg /login) to process incoming user credentials
+    -used middleware for parsing request data and managing server-side flow
+
+2.Frontend (html, css ,JavaScript):
+    -designed simple login UI using html, css 
+    -used JavaScriptvto capture inputs and trigger login requests
+    -ensured client-side validation before sending data to backend
+
+3.dotenv (environment variables):
+    -to securely store sensitive data like credentials and config values
+
+4.Frontend backend integration:
+    -using http requests
+    -handled responses (success/failure) and updated UIaccordingly
+
+5.Login validation:
+    -login to verufy user credentials against stored values
+    invalid attempts with error messages
+    -input--validation-->responses
+
+6.API handling using Fetch:
+    -fetch() to send POST requests from frontend to backend
+    -handled asunchronus res using .then() / async-await
+
+7.Playwright automation testing:
+    -login test using Playwright
+    -tested behaviour through end to end testing
+
+8.Test cases:
+    -multiple test cases to validate
+    -assertions to check expected vs actual outcomes

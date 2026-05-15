@@ -1,5 +1,5 @@
 ================================================================================
-JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 12)
+JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 13)
 ================================================================================
 
 This document provides a concise summary of the core JavaScript concepts 

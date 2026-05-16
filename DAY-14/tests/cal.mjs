@@ -1,14 +1,21 @@
-function sum(a, b) {
-    return a + b;
+// const { sum, sub } = require('./op.mjs')
+
+import sum from "./op.mjs";
+import path from "path";
+
+
+function calculator(a, b) {
+    const s = sum(a, b);
+    // const su = sub(a, b);
+
+    console.log(s);
+    
 }
 
-function sub(a, b) {
-    return a - b;
-}
+calculator(2, 3)
 
-// 1 function to export
-// export default sum;
-// export sum, sub;
-// module.exports = {sum, sub};
+console.log(path.resolve(process.cwd()));
 
-export default sum;
+
+// require(''), module.exports
+// .mjs -> import, export 

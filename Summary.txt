@@ -578,7 +578,7 @@ To run it:
     -handled responses (success/failure) and updated UIaccordingly
 
 5.Login validation:
-    -login to verufy user credentials against stored values
+    -login to verify user credentials against stored values
     invalid attempts with error messages
     -input--validation-->responses
 

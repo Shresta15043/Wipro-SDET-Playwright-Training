@@ -1,5 +1,5 @@
 ================================================================================
-JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 13)
+JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 16)
 ================================================================================
 
 This document provides a concise summary of the core JavaScript concepts 
@@ -593,3 +593,173 @@ To run it:
 8.Test cases:
     -multiple test cases to validate
     -assertions to check expected vs actual outcomes
+
+--------------------------------------------------------------------------------
+DAY 14: ES MODULES & ADVANCED PLAYWRIGHT CONFIG
+--------------------------------------------------------------------------------
+
+1. ES MODULES (ESM) IN NODE.JS
+   - .mjs Extension: Tells Node.js to use modern ECMAScript Modules.
+   - import/export: Using 'import name from "./file.mjs"' and 'export default' 
+     to share code between files instead of 'require' and 'module.exports'.
+   - Modular Code: Separating math logic (op.mjs) from main logic (cal.mjs) 
+     is a standard industry practice.
+
+2. AUTOMATING THE TEST ENVIRONMENT (webServer)
+   - Automation: You can configure Playwright to automatically start your 
+     backend server (node index.js) before the tests begin.
+   - Config Settings:
+     - cwd: The directory where the server code lives.
+     - command: The command to start the server.
+     - url: The URL to wait for before running tests.
+   - Benefit: No need to manually open two terminal windows anymore!
+
+3. SCREENSHOT CONFIGURATION
+   - Capture Logic: Controlled via 'playwright.config.js' under the 'use' block.
+     - 'on': Take screenshots for every test.
+     - 'only-on-failure': Only save screenshots when a test fails (Best practice).
+     - 'off': Never take screenshots.
+   - Storage: Screenshots are automatically saved in the 'test-results' folder.
+
+4. BUILT-IN NODE MODULES
+   - path Module: Used for directory management (path.resolve, path.join). 
+     This ensures your code works correctly on both Windows and Linux.
+
+--------------------------------------------------------------------------------
+KEY TAKEAWAYS (DAY 14)
+--------------------------------------------------------------------------------
+- Using 'webServer' makes your automation truly independent and CI/CD ready.
+- Modular code (mjs) makes your test scripts easier to maintain and read.
+- 'screenshot: only-on-failure' is the most efficient way to debug without 
+  cluttering your project with thousands of images.
+- Always use 'path.resolve' for directory paths to avoid "File Not Found" errors.
+
+--------------------------------------------------------------------------------
+DAY 15: ANNOTATIONS
+--------------------------------------------------------------------------------
+COdegen:It helps to write the code for a particular element in which we hover.
+also it can add assertions(expect) for that.
+This Playwright script demonstrates different test annotations and timeout controls
+used in automation testing. These features help testers manage test execution, handle
+unstable tests, improve reporting, and customize execution time.
+The script uses the @playwright/test framework and groups all tests inside a 
+test.describe() block named "Annotations and Timeouts".
+
+#Annotations :
+
+1. test.skip()
+test.skip('Skip this test', async ({ page }) => {
+#Purpose
+--Skip the execution of a test.
+--Used when a feature is incomplete or     temporarily unavailable.
+#Benefit
+Prevents unnecessary test failures.
+Helps maintain clean test reports.
+
+2. test.fail()
+#Purpose
+--Marks a test as an expected failure.
+   ->If the test actually fails, Playwright treats it as successful.
+   ->If the test unexpectedly passes, Playwright reports an error.
+#Benefit
+--Useful for known bugs that are not fixed yet.
+--Keeps track of failing scenarios intentionally.
+#Example
+The text of the Title is intentionally incorrect:
+await expect(page.locator('h1')).toHaveTitle('Playwright1');
+Since the title does not match, the test fails as expected.
+
+3. test.fixme()
+test.fixme('Fix this flaky test later', async ({ page }) => {
+#Purpose
+--Skips a broken or unstable test.
+--Indicates the test requires fixing in the future.
+#Benefit
+Helps identify flaky tests separately from normal skipped tests.
+
+# Difference Between skip and fixme
+skip	
+Feature not ready Temporary skip	
+
+fixme
+test is broken/flaky and Needs fixing
+
+4. test.slow() and test.setTimeout()
+test.slow();
+test.setTimeout(10000);
+#Purpose
+--test.slow() increases the default timeout by 3 times.
+--test.setTimeout() sets a custom timeout value.
+#Benefit
+Useful for slow-loading applications or complex operations.
+#Example
+test.setTimeout(10000);
+This sets the timeout to exactly 10 seconds.
+
+5. test.step()
+await test.step('Navigate to website', async () => {
+#Purpose
+--Divides test execution into logical steps.
+--Improves readability and reporting.
+#Benefit
+--Helps generate detailed reports.
+--Makes debugging easier.
+--Steps appear clearly in Allure reports.
+#Example Steps
+Navigate to website
+Verify the heading text
+Websites Used
+Playwright official site: Playwright
+Example Domain: Example Domain
+
+#Advantages of Using Annotations and Timeouts
+Improves test management.
+Helps handle unstable tests.
+Makes reports cleaner and more understandable.
+Allows better debugging.
+Prevents unnecessary failures due to slow execution.
+
+This Playwright script demonstrates how annotations like skip, fail, fixme, slow, and step
+can improve automation testing. These features help testers organize tests, handle known 
+issues, customize execution time, and generate professional test reports.
+
+--------------------------------------------------------------------------------
+DAY 16: GROUPING, LIFECYCLE METHODS, HANDLE DIALOGS
+--------------------------------------------------------------------------------
+## *1. Grouping*
+*Purpose*: Organize related tests together for readability and shared setup.  
+*Playwright*: Use `test.describe()` blocks to group tests. Runs with shared `beforeEach`,
+             `afterEach`, `beforeAll`, `afterAll` hooks.  
+*When*: Group tests by feature, page, or user flow. Lets you run/filter groups via CLI.
+
+### *2. Lifecycle Methods*
+*Purpose*: Run setup/teardown code at specific points in the test run.
+
+*Test-level*: `test.beforeEach` runs before each test in the file/group. Use for page nav,
+               login, state reset. `test.afterEach` runs after each test. Use for cleanup, 
+               screenshots on failure.  
+*Group-level*: `test.beforeAll` runs once before all tests in a file/group. Use for heavy
+                setup like DB seed, server start. `test.afterAll` runs once after all tests. 
+                Use for global teardown.  
+*Worker-level*: `beforeWorker`/`afterWorker` for setup shared across files running in one 
+                 worker process.
+*Key*: `beforeEach` = per test. `beforeAll` = per file/group. They cascade from outer
+                      describe blocks inward.
+
+### *3. Handle Dialogue / Alert*
+*Purpose*: Deal with browser dialogs that would normally block test execution.
+
+*Types Playwright handles*: `alert`, `confirm`, `prompt`, `beforeunload` dialogs.  
+
+*Key pattern*: Register a `page.on('dialog', handler)` listener _before_ the action that 
+triggers it. You must either `dialog.accept()` or `dialog.dismiss()`. Unhandled dialogs 
+auto-fail the test.  
+
+*Behavior*: 
+1. *Auto-dismiss*: If no listener, Playwright dismisses dialogs by default.  
+2. *Accept*: Use `dialog.accept(promptText)` to click OK or send text to prompts.  
+3. *Dismiss*: Use `dialog.dismiss()` to click Cancel.  
+4. *Inspect*: Use `dialog.message()` and `dialog.type()` to assert on dialog content.
+
+*Gotcha*: Listener is one-time by default. If multiple dialogs appear, you need to re-attach or
+ handle in the callback.

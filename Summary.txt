@@ -1,5 +1,5 @@
 ================================================================================
-JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 17)
+PLAYWRIGHT & JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 17)
 ================================================================================
 
 This document provides a concise summary of the core JavaScript concepts 

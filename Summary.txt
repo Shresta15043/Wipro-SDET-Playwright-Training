@@ -1,5 +1,5 @@
 ================================================================================
-JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 16)
+JAVASCRIPT TRAINING SYNOPSIS (DAY 1 - DAY 17)
 ================================================================================
 
 This document provides a concise summary of the core JavaScript concepts 
@@ -763,3 +763,24 @@ auto-fail the test.
 
 *Gotcha*: Listener is one-time by default. If multiple dialogs appear, you need to re-attach or
  handle in the callback.
+
+--------------------------------------------------------------------------------
+DAY 17: PARAM ASSERTIONS, SOFT, POLL & AUTH MANAGEMENT
+--------------------------------------------------------------------------------
+1. Parameterized Tests
+Parameterized testing lets you run the same test logic multiple times with different data sets,
+preventing code duplication.
+
+2. Soft Assertions
+Standard assertions (expect()) stop test execution immediately upon failure. Soft assertions
+(expect.soft()) compile a list of failures but allow the test to keep running to catch multiple 
+issues at once.
+
+3. Polling Assertions
+When you need to wait for a condition that isn't tied to a standard Playwright web locator 
+(like a database change, a backend API response, or a text value inside a canvas element), 
+use expect.poll().
+
+4. Auth Management (Storage State)
+Instead of logging in before every single test, you can log in once during a global setup phase, 
+save the cookies/session storage to a file, and reuse it across all tests.
